@@ -1,0 +1,1 @@
+linters: linters_with_defaults(indentation_linter = indentation_linter(indent = 2), line_length_linter = NULL, commented_code_linter = NULL, implicit_integer_linter())
