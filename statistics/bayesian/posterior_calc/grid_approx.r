@@ -26,3 +26,18 @@ unstd.posterior <- likelihood * prior
 posterior <- unstd.posterior / sum(unstd.posterior)
 
 plot( p_grid, posterior, type="b", xlab="probability of water" , ylab="posterior probability" )
+
+# sample parameter from posterior
+sample_n <- 1e4
+samples <- sample(p_grid, prob=posterior, size=sample_n, replace=TRUE)
+rethinking::dens(samples)
+sum( samples < 0.5 ) / sample_n # Pr(p below 0.5)
+sum( samples > 0.5 & samples < 0.75 ) / sample_n # Pr(p between 0.5 and 0.75)
+quantile( samples , c( 0.025 , 0.975 ) ) # confidence interval
+rethinking::HPDI(samples, prob=0.5) # highest posterior density interval (good for highly skewed posterior)
+rethinking::chainmode( samples , adj=0.01 ) # MAP
+
+# simulate data from posterior predictive distribution
+# 1) sample parameter from posterior
+# 2) sample data using sampled parameter
+w <- rbinom( 1e4 , size=9 , prob=samples )

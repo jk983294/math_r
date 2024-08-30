@@ -1,7 +1,7 @@
 library(ggplot2)
 library(tibble)
 
-polt_hist <- function(x, n_bins = 10L, use_density_hight = FALSE){
+plot_hist <- function(x, n_bins = 10L, use_density_hight = TRUE){
   if (use_density_hight) {
     ggplot2::ggplot(data=tibble::tibble(x=x), mapping=ggplot2::aes(x=x, y=..density..)) +
       ggplot2::geom_histogram(bins=n_bins) +
@@ -14,5 +14,5 @@ polt_hist <- function(x, n_bins = 10L, use_density_hight = FALSE){
 }
 
 x <- rnorm(100, 0, 1)
-polt_hist(x, 20)
-polt_hist(x, 20, TRUE)
+plot_hist(x, 20, FALSE)
+plot_hist(x, 20, TRUE)
