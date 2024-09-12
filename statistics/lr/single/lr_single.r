@@ -11,3 +11,8 @@ xy_model <- lm(y ~ 0 + x)
 yx_model <- lm(x ~ 0 + y)
 summary(xy_model)
 summary(yx_model)
+
+coef(xy_model)
+fitted(xy_model)
+resid(xy_model)
+(r_square <- 1 - var(resid(xy_model))/var(y))

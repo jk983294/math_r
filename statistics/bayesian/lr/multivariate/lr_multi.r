@@ -61,3 +61,9 @@ for ( i in 1:nrow(d) ) {
     lines( d$Divorce[j]-c(mu.PI[1,j], mu.PI[2,j]) , rep(i,2) )
     points( d$Divorce[j]-c(divorce.PI[1,j],divorce.PI[2,j]) , rep(i,2), pch=3 , cex=0.6 , col="gray" )
 }
+
+# compute deviance
+theta <- coef(model)
+dev <- (-2)*sum( dnorm( d$Divorce , mean=theta[1]+theta[2]*d$Marriage.s+theta[3]*d$MedianAgeMarriage.s , sd=theta[4] , log=TRUE ) )
+
+# compute WAIC

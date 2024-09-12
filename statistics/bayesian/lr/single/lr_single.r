@@ -62,3 +62,16 @@ plot( height ~ weight , d2 )
 lines( weight.seq , mu.mean ) # draw MAP line
 shade( mu.HPDI , weight.seq ) # draw HPDI region for line
 shade( height.PI , weight.seq ) # draw PI region for simulated heights
+
+# calculate WAIC
+n_samples <- 10000L
+ll <- sapply( 1:n_samples ,
+    function(s) {
+        mu <- post$a[s] + post$b[s] * d2$weight
+        dnorm( d2$height , mu , post$sigma[s] , log=TRUE )
+    } )
+n_cases <- nrow(d2)
+lppd <- sapply( 1:n_cases , function(i) log_sum_exp(ll[i,]) - log(n_samples) )
+pWAIC <- sapply( 1:n_cases , function(i) var(ll[i,]) )
+WAIC <- -2*( sum(lppd) - sum(pWAIC) )
+WAIC_sd <- sqrt( n_cases*var(-2*( lppd - pWAIC )) )
