@@ -18,3 +18,4 @@ dt[ , .N, by = f_vec] # Get Frequency
 v <- 1:100
 v[c(1, 3, 5)] # only indexed elements
 v[-c(1, 3, 5)] # elements removed indexed
+v[v > 50]

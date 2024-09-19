@@ -8,7 +8,7 @@ f <- function(x) {
   return(x^3 - 2*x - 5)
 }
 interval <- c(1, 3)
-root <- uniroot(f, interval)
+root <- uniroot(f, interval) # Brent method
 root_value <- root$root
 print(paste("The root is approximately:", root_value))
 
@@ -16,3 +16,11 @@ print(paste("The root is approximately:", root_value))
 h <- function(x) x^5 * exp(-x)
 optimize(h, lower = 0, upper = 20, maximum = TRUE)
 optimize(h, lower = 0, upper = 20, maximum = FALSE)
+
+# minimizing a non-linear function
+f <- function(x) {
+  return((x - 2)^2 + 1)
+}
+result <- nlm(f, p = 0)  # Starting guess is 0
+print(result$estimate)  # The value of x that minimizes the function
+print(result$minimum)   # The minimum value of the function

@@ -1,6 +1,12 @@
 a <- matrix(c(1, 2, 3, 4), nrow = 2)  # [[1, 3], [2, 4]]
+colnames(a) <- c("X1", "X2")
+rownames(a) <- c("Y1", "Y2")
 b <- matrix(c(1, -1, 0, 1), nrow = 2)  # [[1, 0], [-1, 1]]
 x <- c(2, 5)
+
+# standardize
+a <- sweep(a, 2, apply(a, 2, mean), `-`) # minus the col.mean
+a <- sweep(a, 2, apply(a, 2, sd), `/`) # divide the col.sd
 
 2 * a  # 2 * a = [[2, 6], [4, 8]]
 t(a)  # transpose [[1, 2], [3, 4]]
