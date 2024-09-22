@@ -21,6 +21,7 @@ DT1[, DT2[.SD, C, on = c("B")]] # DT1's key join with DT2 to get C column
 DT1[DT2, on = c("B"), nomatch = 0]
 DT2[DT1, on = c("B"), nomatch = 0]
 merge(DT1, DT2, all = FALSE)
+(dt3 <- merge(DT1, DT2, by.x = c("B"), by.y = c("B")))
 
 #### full outer Join
 merge(DT1, DT2, all = TRUE)
