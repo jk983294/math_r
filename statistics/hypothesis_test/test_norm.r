@@ -15,3 +15,7 @@ result <- shapiro.test(x)
 result <- shapiro.test(y)
 
 print(result)
+
+# method 4: Kolmogorov-Smirnov test
+ks_test_result <- ks.test(x, "pnorm", mean = 0, sd = 1)
+ks_test_result$p.value
