@@ -1,5 +1,9 @@
 library(data.table)
 
+# converted named vector to dt
+named_vec <- c(a = 1, b = 2)
+dt <- data.table(name = names(named_vec), value = named_vec)
+
 dt <- data.table(school = c("NTU", "SMU", "NUS"), rank = c(2, 1, 3), size = c(1, 3, 2))
 dim(dt)
 class(dt$school) # character column never converted to factors by default
