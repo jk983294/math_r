@@ -30,6 +30,7 @@ dt[, .(min_y = min(y, na.rm = TRUE)), by = x]
 
 # top n of group
 dt[order(-y)][, head(.SD, 1), by = x] # top n value by x
+dt[, tail(.SD, 1), by = x] # last row by x
 
 # apply to all subset using .SD
 dt[, print(.SD), by = x] # .SD contains all the columns except the grouping columns by default

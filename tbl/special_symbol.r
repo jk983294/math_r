@@ -24,6 +24,8 @@ dt[, .SD[which.min(y)], by = x]
 DT[, .SD, .SDcols = x:y] # select columns between 'x' and 'y'
 DT[, .SD[1]] # first row of all columns
 DT[, .SD[1], by = x] # first row of 'y' and 'v' for each group in 'x'
+DT[, .SD[.N], by = x] # last row by x
+DT[, .SD[.N, .(v, y)], by = x] # last row by x, select column
 DT[, c(.N, lapply(.SD, sum)), by = x] # get row number and sum of columns by group x
 DT[, .I[1], by = x] # first row's number in DT by each group x
 rleid(DT$v) # generate run-length type group id of 'v'
