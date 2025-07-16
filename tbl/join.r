@@ -14,6 +14,7 @@ DT2[, DT1[.SD, A, on = c("B")]] # DT2's key join with DT1 to get A column
 # keep all DT1's key column or B column
 DT2[DT1]
 DT2[DT1, on = c("B")]
+diff <- DT2[!DT1, on = c("B")] # find DT2 not in DT1 by column B
 merge(DT1, DT2, all.x = TRUE) # RIGHT OUTER
 DT1[, DT2[.SD, C, on = c("B")]] # DT1's key join with DT2 to get C column
 

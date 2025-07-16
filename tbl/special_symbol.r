@@ -18,6 +18,9 @@ dt[, print(.SD), by = x]
 dt[, .SD[which.max(y)], by = x]
 dt[, .SD[which.min(y)], by = x]
 
+# add id
+dt[, id := .I]
+
 
 (DT <- data.table(x = rep(c("b", "a", "c"), each = 3), v = c(1, 1, 1, 2, 2, 1, 1, 2, 2), y = c(1, 3, 6), a = 1:9, b = 9:1))
 (X <- data.table(x = c("c", "b"), v = 8:7, foo = c(4, 2)))
