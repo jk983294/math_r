@@ -1,0 +1,1 @@
+diff <- DT2[!DT1, on = c("B")] # find DT2 not in DT1 by column B
