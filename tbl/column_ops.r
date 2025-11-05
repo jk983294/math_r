@@ -22,3 +22,7 @@ dt[, x1 := as.character(x1)] # one column
 change_columns <- c("x1", "x3")
 dt[, (change_columns) := lapply(.SD, as.character), .SDcols = change_columns]
 dt[, (c("x1", "x3")) := lapply(.SD, as.character), .SDcols = c("x1", "x3")]
+
+# add new column
+add_5 <- function(x) x + 5
+dt[, new_x3 := mapply(add_5, x3)]

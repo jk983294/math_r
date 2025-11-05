@@ -8,6 +8,7 @@ summary(iris) # Summary statistics for iris data
 
 # below LD_LIBRARY_PATH can avoid some install.packages error
 Sys.setenv(LD_LIBRARY_PATH=paste("/opt/anaconda3/lib", Sys.getenv("LD_LIBRARY_PATH"),sep=":"))
+options("repos" = c(CRAN="https://mirrors.tuna.tsinghua.edu.cn/CRAN/"))
 install.packages("arrow")
 remove.packages("arrow")
 

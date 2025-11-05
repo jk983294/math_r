@@ -1,3 +1,5 @@
+library(data.table)
+
 (DT1 <- data.table(B = letters[5L:1L], A = 5L:1L, C = 15L:11L))
 (DT2 <- data.table(B = letters[3L:7L], C = 11L:15L, D = 21L:25L))
 (setkey(DT1, B))
@@ -8,6 +10,7 @@
 # keep all DT2's key column or B column
 DT1[DT2]
 DT1[DT2, on = c("B")]
+DT1[DT2, D := i.D, on = "B"] # copy DT2's D column by B column
 merge(DT1, DT2, all.y = TRUE) # LEFT OUTER
 DT2[, DT1[.SD, A, on = c("B")]] # DT2's key join with DT1 to get A column
 

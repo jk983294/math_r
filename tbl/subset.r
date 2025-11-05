@@ -11,6 +11,7 @@ dt <- data.table(x = c("a", "b", "c", "b"), y = c(2, 1, 3, 4), z = c(1, 3, 2, 2)
 (ans <- dt[y %between% c(1.5, 3.5)])
 (ans <- dt[1L:2L]) # get the first two rows
 dt[.N] # last row of all columns
+dt[, .SD[.N], by = sid] # last row by group
 dt[, .SD[1L]] # first row of all columns
 dt[order(-y)][, head(.SD, 2L), by = x] # top n value by x
 
