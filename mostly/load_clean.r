@@ -10,6 +10,7 @@ summary(iris) # Summary statistics for iris data
 Sys.setenv(LD_LIBRARY_PATH=paste("/opt/anaconda3/lib", Sys.getenv("LD_LIBRARY_PATH"),sep=":"))
 options("repos" = c(CRAN="https://mirrors.tuna.tsinghua.edu.cn/CRAN/"))
 install.packages("arrow")
+remotes::install_version("arrow", version = "19.0.1") # install specific version
 remove.packages("arrow")
 
 update.packages()  # update all available packages
