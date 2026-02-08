@@ -29,6 +29,10 @@ merge(DT1, DT2, all = FALSE)
 
 #### full outer Join
 merge(DT1, DT2, all = TRUE)
+dt_12 <- merge(dt1, dt2, by = c("ukey"), all = TRUE)
+dt_12[, pos.x := ifelse(is.na(pos.x), 0.0, pos.x)]  # fill missing value to 0
+dt_12[, pos.y := ifelse(is.na(pos.y), 0.0, pos.y)]
+dt_12[, diff := abs(pos.x - pos.y)]
 
 
 # SJ : Sorted Join. The same as J() but additionally setkey() is called on all columns

@@ -1,6 +1,12 @@
 # Accelerated Proximal Gradient Descent for Lasso Regression
 # Objective: min_w [ (1/2n) * ||Xw - y||^2 + λ||w||_1 ]
 
+# FISTA is better for:
+# - Small to medium dimensional problems
+# - Problems where most features are relevant
+# - Direct coefficient estimation needed
+# - Path-wise solutions (multiple λ values)
+
 # Helper function: Soft thresholding operator
 soft_threshold <- function(z, gamma) {
   sign(z) * pmax(abs(z) - gamma, 0)

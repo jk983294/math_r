@@ -1,6 +1,12 @@
 library(Matrix)
 library(matrixcalc)
 
+# DPP is better for:
+# - High-dimensional problems (p >> n)
+# - Sparse solutions expected
+# - Pre-processing stage beneficial
+# - Sequential λ-path optimization
+
 # DPP Screening Function
 dpp_screen <- function(A, b, lambda, x, lambda_prev = NULL) {
   n <- nrow(A)
