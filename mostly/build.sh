@@ -1,4 +1,5 @@
 # build from source
+apt install -y libcairo2-dev libpango1.0-dev libjpeg-dev libgif-dev librsvg2-dev
 sudo apt install -y build-essential gfortran \
     libreadline-dev libx11-dev libxt-dev libpng-dev libjpeg-dev \
     libcairo2-dev libpcre2-dev libcurl4-openssl-dev \
